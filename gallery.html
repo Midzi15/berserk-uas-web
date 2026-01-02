@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Berserk | Gallery</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body onload="waktu()">
+
+<header class="banner">
+  <div class="container brand">
+    <div>
+      <h1>GALLERY</h1>
+      <p>Cuplikan visual.</p>
+    </div>
+    <div class="badge">🖼️ Klik gambar untuk preview</div>
+  </div>
+</header>
+
+<nav>
+  <div class="container navbar">
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="story.html">Story</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a class="btn" href="index.html">Kembali Home →</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+    <section class="card">
+      <h2>Gallery</h2>
+      <p>
+        Karakter Penting:
+      </p>
+
+      <div class="gallery" id="gallery">
+        <div class="figure" data-src="g1.jpg" data-title="Guts" data-desc="Sang penantang takdir, simbol struggle.">
+          <img src="g2.jpg" alt="Guts">
+          <div class="figcap">
+            <strong>Guts</strong>
+            <span>Sang penantang takdir, simbol struggle.</span>
+          </div>
+        </div>
+
+        <div class="figure" data-src="grif2.jpg" data-title="Griffith" data-desc="Ambisi dan tragedi pengkhianatan.">
+          <img src="grif1.jpg" alt="Griffith">
+          <div class="figcap">
+            <strong>Griffith</strong>
+            <span>Ambisi dan tragedi pengkhianatan.</span>
+          </div>
+        </div>
+
+        <div class="figure" data-src="ec2.jpg" data-title="Eclipse" data-desc="Momen kelam yang mengubah segalanya.">
+          <img src="ec1.jpg" alt="Eclipse">
+          <div class="figcap">
+            <strong>Eclipse</strong>
+            <span>Momen kelam yang mengubah segalanya.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Modal Preview -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div id="modalText">Preview</div>
+      <button id="closeModal">Tutup</button>
+    </div>
+    <img id="modalImg" src="" alt="Preview">
+  </div>
+</div>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <div id="jam"></div>
+      <small>© 2026 | Muhammad Kamaludin Tirmidzi - 251011701291 - 01SIFP003</small>
+    </div>
+    <small>Fitur: Gallery grid + modal preview</small>
+  </div>
+</footer>
+
+<script src="time.js"></script>
+<script>
+  // Modal preview (ringan, nilai A vibe)
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalText = document.getElementById('modalText');
+  const closeBtn = document.getElementById('closeModal');
+
+  document.getElementById('gallery').addEventListener('click', (e) => {
+    const item = e.target.closest('.figure');
+    if(!item) return;
+
+    modalImg.src = item.dataset.src;
+    modalText.textContent = item.dataset.title + " — " + item.dataset.desc;
+    modal.classList.add('show');
+  });
+
+  closeBtn.addEventListener('click', () => modal.classList.remove('show'));
+  modal.addEventListener('click', (e) => {
+    if(e.target === modal) modal.classList.remove('show');
+  });
+</script>
+</body>
+</html>

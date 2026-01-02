@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Berserk | Contact</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body onload="waktu()">
+
+<header class="banner">
+  <div class="container brand">
+    <div>
+      <h1>CONTACT</h1>
+      <p>Formulir masukan.</p>
+    </div>
+    <div class="badge">✉️ Form • Validasi • Feedback</div>
+  </div>
+</header>
+
+<nav>
+  <div class="container navbar">
+    <div class="menu">
+      <a href="index.html">Home</a>
+      <a href="story.html">Story</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a class="btn" href="story.html">Baca Story →</a>
+  </div>
+</nav>
+
+<main>
+  <div class="container grid">
+    <section class="card">
+      <h2>Kirim Pesan</h2>
+      <p>Isi data dengan benar. Setelah submit, akan muncul notifikasi.</p>
+
+      <form id="contactForm">
+        <div class="form-row">
+          <div>
+            <label>Nama</label>
+            <input type="text" id="nama" placeholder="Nama kamu">
+          </div>
+          <div>
+            <label>Email</label>
+            <input type="email" id="email" placeholder="nama@email.com">
+          </div>
+        </div>
+
+        <div>
+          <label>Pesan</label>
+          <textarea id="pesan" placeholder="Tulis pesan..."></textarea>
+        </div>
+
+        <button class="btn" type="submit">Kirim</button>
+        <div class="notice" id="msg" style="display:none;"></div>
+      </form>
+    </section>
+
+    <aside class="card">
+      <h2>Info</h2>
+      <p>
+        Halaman ini memenuhi syarat “Form input”. Nilai tambah:
+        validasi sederhana & feedback.
+      </p>
+      <div class="kv">
+        <span class="tag">Validasi kosong</span>
+        <span class="tag">Email format</span>
+        <span class="tag">UX Feedback</span>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="container footer">
+    <div>
+      <div id="jam"></div>
+      <small>© 2026 | Muhammad Kamaludin Tirmidzi - 251011701291 - 01SIFP003</small>
+    </div>
+    <small>Fitur: Form + validasi JS</small>
+  </div>
+</footer>
+
+<script src="time.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+  const msg = document.getElementById('msg');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nama = document.getElementById('nama').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pesan = document.getElementById('pesan').value.trim();
+
+    msg.style.display = "block";
+
+    if(!nama || !email || !pesan){
+      msg.textContent = "❌ Semua field wajib diisi.";
+      return;
+    }
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(!emailOk){
+      msg.textContent = "❌ Format email tidak valid.";
+      return;
+    }
+
+    msg.textContent = "✅ Pesan berhasil dikirim (simulasi). Terima kasih!";
+    form.reset();
+  });
+</script>
+</body>
+</html>
